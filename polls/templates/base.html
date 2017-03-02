@@ -8,5 +8,13 @@
 </head>
 <body>
 {% block content %}{% endblock %}
+
+<input type="submit" name="back" id="changeBack" value="Click to change background">
+
+<script src="{% static 'polls/js/vendor/jquery-3.1.1.min.js' %}"></script>
+<script src="{% static 'polls/js/vendor/TweenMax.min.js' %}"></script>
+<script src="{% static 'polls/js/app/app.js' %}"></script>
+{% block scripts %}
+{% endblock %}
 </body>
 </html>
