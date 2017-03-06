@@ -1,0 +1,39 @@
+{% load static %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+
+<canvas id="main_window" width="800" height="400"></canvas>
+
+<form action="{% url 'polls:play' question.id %}" method="post">
+  {% csrf_token %}
+  <input type="hidden" id="winner" name="choice"/>
+  <input type="submit" value="Submit this vote" />
+</form>
+
+<script src = "{% static 'polls/animation/exercices.js' %}"></script>
+<script>
+  var callback = function() {setInterval(on_enter_frame,30);}
+  var head = document.getElementsByTagName('head')[0];
+  var script = document.createElement('script');
+  script.src = "{% static 'polls/animation/voteGame.js' %}";
+  script.onreadystatechange = callback;
+  script.onload = callback;
+  head.appendChild(script);
+  var choiceids = [{% for choice in question.choice_set.all %}'{{ choice.id|escapejs }}',{% endfor %}]
+  function log(msg) {
+    setTimeout(function() {
+      throw new Error(msg);
+    }, 0);
+  }
+  function onCollision(){
+    var filepath="{% static 'polls/sound/waterdrip.mp3' %}"; //example
+    var audio = new Audio();   
+    audio.src = filepath;
+    audio.controls = true;
+    audio.autoplay = true;
+    //log("bing!");
+    return;
+  }
+</script>

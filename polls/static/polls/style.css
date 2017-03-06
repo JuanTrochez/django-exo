@@ -1,28 +1,7 @@
 body {
       background: white url("images/background.png") no-repeat right bottom;
-      max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
-}
-.change-bkg {
-  background-color: blue;
 }
 
 li a {
       color: green;
-}
-
-form {
-  position: relative;
-}
-input[type="submit"] {
-  background: white;
-    border: 1px solid black;
-    font-size: 16px;
-    text-transform: uppercase;
-    padding: 5px 20px;
-    border-radius: 5px;
-    margin-top: 15px;
-    cursor: pointer;
-    opacity: 0;
 }
